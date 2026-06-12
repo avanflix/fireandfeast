@@ -5,6 +5,9 @@ import Navbar from '@/components/Navbar'
 export const metadata: Metadata = {
   title: 'Fire & Feast – Tirupati',
   description: 'Where warmth meets indulgence. Elevated dining & café culture in the heart of Tirupati.',
+    icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

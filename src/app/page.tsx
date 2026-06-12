@@ -99,6 +99,13 @@ export default function HomePage() {
     }
   };
 
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const maxDate = new Date();
+  maxDate.setMonth(maxDate.getMonth() + 1);
+  const oneMonthLater = maxDate.toISOString().split("T")[0];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -536,55 +543,219 @@ export default function HomePage() {
           </p>
 
           <form onSubmit={handleSubmit}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-              {[
-                { label: 'Name', key: 'name', type: 'text', placeholder: 'Your full name', colSpan: false },
-                { label: 'Phone', key: 'phone', type: 'tel', placeholder: '+91 XXXXX XXXXX', colSpan: false },
-                { label: 'Reservation Date', key: 'date', type: 'date', placeholder: '', colSpan: false },
-                { label: 'Reservation Time', key: 'time', type: 'time', placeholder: '', colSpan: false },
-                { label: 'Number of Guests', key: 'guests', type: 'number', placeholder: '2', colSpan: false },
-              ].map((f) => (
-                <div key={f.key} style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: '#7A6A58' }}>
-                    {f.label}
-                  </label>
-                  <input
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    className="ff-input"
-                    value={(formState as Record<string, string>)[f.key]}
-                    onChange={e => setFormState(prev => ({ ...prev, [f.key]: e.target.value }))}
-                  />
-                </div>
-              ))}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "14px",
+              }}
+            >
+              {/* Name */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Your full name"
+                  className="ff-input"
+                  value={formState.name}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      name: e.target.value,
+                    }))
+                  }
+                />
+              </div>
 
-              {/* Location select */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                <label style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: '#7A6A58' }}>
+              {/* Phone */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  required
+                  pattern="[0-9]{10}"
+                  placeholder="9876543210"
+                  className="ff-input"
+                  value={formState.phone}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      phone: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              {/* Reservation Date */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
+                  Reservation Date
+                </label>
+                <input
+                  type="date"
+                  required
+                  min={today}
+                  max={oneMonthLater}
+                  className="ff-input"
+                  value={formState.date}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      date: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              {/* Reservation Time */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
+                  Reservation Time
+                </label>
+                <input
+                  type="time"
+                  required
+                  min="11:00"
+                  max="23:00"
+                  className="ff-input"
+                  value={formState.time}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      time: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              {/* Guests */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
+                  Number of Guests
+                </label>
+                <input
+                  type="number"
+                  required
+                  min="1"
+                  max="50"
+                  placeholder="2"
+                  className="ff-input"
+                  value={formState.guests}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      guests: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              {/* Location */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
                   Location
                 </label>
+
                 <select
                   className="ff-input"
                   value={formState.location}
-                  onChange={e => setFormState(prev => ({ ...prev, location: e.target.value }))}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      location: e.target.value,
+                    }))
+                  }
                 >
-                  <option value="">Select…</option>
                   <option value="Tirupati">Tirupati</option>
                 </select>
               </div>
 
-              {/* Notes full width */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', gridColumn: '1 / -1' }}>
-                <label style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: '#7A6A58' }}>
+              {/* Notes */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "5px",
+                  gridColumn: "1 / -1",
+                }}
+              >
+                <label
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    color: "#7A6A58",
+                  }}
+                >
                   Notes
                 </label>
+
                 <textarea
                   className="ff-input"
                   placeholder="Any special requests or dietary requirements?"
                   rows={3}
                   value={formState.notes}
-                  onChange={e => setFormState(prev => ({ ...prev, notes: e.target.value }))}
-                  style={{ resize: 'vertical' }}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      notes: e.target.value,
+                    }))
+                  }
+                  style={{ resize: "vertical" }}
                 />
               </div>
             </div>
@@ -592,17 +763,23 @@ export default function HomePage() {
             <button
               type="submit"
               style={{
-                width: '100%', marginTop: '10px',
-                background: submitted ? '#2a7a3a' : '#C8561E',
-                color: '#fff', padding: '15px',
-                borderRadius: '8px', border: 'none',
-                fontSize: '14px', fontWeight: 600, letterSpacing: '0.05em',
-                cursor: 'pointer', transition: 'background 0.25s, transform 0.2s',
-                boxShadow: '0 4px 18px rgba(200,86,30,0.3)',
-                fontFamily: 'Inter, sans-serif',
+                width: "100%",
+                marginTop: "10px",
+                background: submitted ? "#2a7a3a" : "#C8561E",
+                color: "#fff",
+                padding: "15px",
+                borderRadius: "8px",
+                border: "none",
+                fontSize: "14px",
+                fontWeight: 600,
+                letterSpacing: "0.05em",
+                cursor: "pointer",
+                transition: "background 0.25s, transform 0.2s",
+                boxShadow: "0 4px 18px rgba(200,86,30,0.3)",
+                fontFamily: "Inter, sans-serif",
               }}
             >
-              {submitted ? '✓ Reservation Confirmed!' : 'Reserve Now'}
+              {submitted ? "✓ Reservation Confirmed!" : "Reserve Now"}
             </button>
           </form>
         </div>
