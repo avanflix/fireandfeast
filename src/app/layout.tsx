@@ -3,8 +3,17 @@ import '../styles/globals.css'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Fire & Feast – Tirupati',
-  description: 'Where warmth meets indulgence. Elevated dining & café culture in the heart of Tirupati.',
+    title: "Fire & Feast Restaurant | Tirupati",
+  description:
+    "Experience premium dining at Fire & Feast Restaurant & Leo Café, Tirupati. Handcrafted flavors, warm hospitality, and memorable dining experiences.",
+  keywords: [
+    "Fire and Feast",
+    "Fire & Feast Tirupati",
+    "Restaurant in Tirupati",
+    "Leo Cafe",
+    "Best restaurant in Tirupati",
+    "Cafe in Tirupati",
+  ],
     icons: {
     icon: "/favicon.ico",
   },
