@@ -29,32 +29,14 @@ export async function POST(req: Request) {
       `,
     });
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: data.email,
-      subject: "Reservation Confirmation - Fire & Feast",
-      html: `
-    <h1>Thank You, ${data.name}!</h1>
-
-    <p>Your reservation request has been received.</p>
-
-    <h3>Reservation Details</h3>
-
-    <p><b>Date:</b> ${data.date}</p>
-    <p><b>Time:</b> ${data.time}</p>
-    <p><b>Guests:</b> ${data.guests}</p>
-    <p><b>Location:</b> ${data.location}</p>
-
-    <p>
-      We look forward to welcoming you to
-      Fire & Feast Restaurant.
-    </p>
-
-    <p>
-      Phone: +91 77999 22268
-    </p>
-  `,
-    });
+    if (data.email) {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: data.email,
+        subject: "Reservation Confirmation - Fire & Feast",
+        html: `...`
+      });
+    }
 
     console.log("Mail sent:", info);
 
