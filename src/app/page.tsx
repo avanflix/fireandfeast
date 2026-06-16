@@ -382,7 +382,7 @@ export default function HomePage() {
             }}
           />
           <img
-            src="https://framerusercontent.com/images/fYA6k66LjNr7wGNnfyJ4JmT9k.jpg"
+            src="/images/image1.jpg"
             alt="Cafe"
             style={{
               position: 'absolute', bottom: 0, right: 0,
