@@ -1,7 +1,14 @@
 'use client'
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
+} from "react-icons/fa";
+
+import { SiSwiggy, SiZomato } from "react-icons/si";
 
 const marqueeText = [
   'Fire in Our Passion', '·', 'Feast in Every Moment', '·',
@@ -47,47 +54,45 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Instagram image strip */}
-      <div className="flex overflow-hidden" style={{ height: '100px' }}>
-        {[
-          'https://framerusercontent.com/images/LEbWGrnOUnXWl3DRLqIVfCLYY.png',
-          'https://framerusercontent.com/images/0o1O8xmvE5QMQOeiKqIFQvj8wiY.png',
-        ].map((src, i) => (
-          <div key={i} className="img-zoom flex-1" style={{ minWidth: '50%' }}>
-            <img
-              src={src}
-              alt=""
-              style={{
-                width: '120%',
-                height: '120%',
-                objectFit: 'contain',
-                background: '#000',
-              }}
-            />
-          </div>
-        ))}
-      </div>
-
       {/* Main footer columns */}
       <div
+       className='footer-grid'
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '40px',
           padding: '56px 60px 40px',
           borderTop: '1px solid rgba(237,232,223,0.06)',
+          background: '#000',
+          alignItems: 'start',
         }}
       >
         {/* Brand */}
-        <div>
-          <Image
-            src="https://framerusercontent.com/images/H65hJuv9H7SoeIY8Y2I4lPYQeBM.png"
-            alt="Fire & Feast"
-            width={110}
-            height={32}
-            style={{ objectFit: 'contain', marginBottom: '16px', filter: 'brightness(1.15)' }}
-          />
-          <p style={{ fontSize: '13px', color: '#7A6A58', lineHeight: 1.7, maxWidth: '240px' }}>
+        <div
+          style={{
+            transform: 'translateY(-50px)',
+          }}
+        >
+          <div className="flex overflow-hidden" style={{ height: '90px' }}>
+            {[
+              'https://framerusercontent.com/images/LEbWGrnOUnXWl3DRLqIVfCLYY.png',
+              'https://framerusercontent.com/images/0o1O8xmvE5QMQOeiKqIFQvj8wiY.png',
+            ].map((src, i) => (
+              <div key={i} className="img-zoom flex-1" style={{ minWidth: '50%' }}>
+                <img
+                  src={src}
+                  alt=""
+                  style={{
+                    width: '120%',
+                    height: '120%',
+                    objectFit: 'contain',
+                    background: '#000',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: '13px', color: '#7A6A58', lineHeight: 1.7 }}>
             Elevated dining & café culture in the heart of Tirupati. Where every visit becomes a cherished memory.
           </p>
         </div>
@@ -106,12 +111,11 @@ export default function Footer() {
           >
             Order & Follow Us
           </h4>
-
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '18px',
+              display: "flex",
+              alignItems: "center",
+              gap: "30px",
             }}
           >
             {/* Swiggy */}
@@ -119,16 +123,15 @@ export default function Footer() {
               href="https://www.swiggy.com/city/tirupati/fire-and-feast-restaurant-tata-nagar-rest1064438"
               target="_blank"
               rel="noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+              style={{
+                color: "#FC8019",
+                display: "flex",
+                alignItems: "center",
+                transition: "transform 0.2s ease",
+              }}
             >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/1/13/Swiggy_logo.png"
-                alt="Swiggy"
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  objectFit: 'contain',
-                }}
-              />
+              <SiSwiggy size={24} />
             </a>
 
             {/* Zomato */}
@@ -136,22 +139,20 @@ export default function Footer() {
               href="https://www.zomato.com/tirupati/fire-and-feast-restaurant-tiruchanur/order"
               target="_blank"
               rel="noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+              style={{
+                color: "#E23744",
+                display: "flex",
+                alignItems: "center",
+                transition: "transform 0.2s ease",
+              }}
             >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png"
-                alt="Zomato"
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  objectFit: 'contain',
-                }}
-              />
+              <SiZomato size={48} />
             </a>
-
           </div>
         </div>
 
-                {/* Follow Us */}
+        {/* Follow Us */}
         <div>
           <h4
             style={{
@@ -170,29 +171,73 @@ export default function Footer() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '18px',
+              gap: '20px',
+              flexWrap: 'wrap',
             }}
           >
-            {/* Instagram */}
             <a
               href="https://www.instagram.com/fireandfeast_tpt"
               target="_blank"
               rel="noreferrer"
+              className="hover:scale-125 transition-all duration-300"
+              style={{
+                color: "#E4405F",
+                filter: "drop-shadow(0 0 8px rgba(228,64,95,0.5))",
+              }}
             >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                alt="Instagram"
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  objectFit: 'contain',
-                }}
-              />
+              <FaInstagram size={24} />
             </a>
+
+
+            <a
+              href="https://www.facebook.com/fireandfeast.tirupati"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+              style={{ color: "#1877F2" }}
+            >
+              <FaFacebookF size={24} />
+            </a>
+
+            <a
+              href="https://youtube.com/@fireandfeast_tirupati?si=8fDe-ePeDaMiIEp5"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+              style={{ color: "#FF0000" }}
+
+            >
+              <FaYoutube size={24} />
+            </a>
+            {/* 
+            <a
+              href="tel:+919876543210"
+              style={{ color: '#EDE8DF' }}
+            >
+              <Phone size={22} />
+            </a> */}
+
+            {/* <a
+              href="mailto:info@fireandfeast.com"
+              style={{ color: '#EDE8DF' }}
+            >
+              <Mail size={22} />
+            </a> */}
+
+            {/* <a
+              href="https://maps.google.com"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: '#EDE8DF' }}
+            >
+              <MapPin size={22} />
+            </a> */}
+
           </div>
         </div>
+
         {/* Newsletter */}
-        <div>
+        {/* <div>
           <h4 style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '##c7c7c7', marginBottom: '12px' }}>
             Join Our Fire
           </h4>
@@ -230,9 +275,10 @@ export default function Footer() {
               {subbed ? '✓ Done!' : 'Subscribe'}
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
 
+      {/* Bottom bar */}
       {/* Bottom bar */}
       <div
         className="flex justify-between items-center flex-wrap gap-3"
@@ -240,7 +286,15 @@ export default function Footer() {
       >
         <p style={{ fontSize: '12px', color: '#7A6A58' }}>© 2025 Fire & Feast Restaurant · Leo Café · Tirupati</p>
         <p style={{ fontSize: '12px', color: '#7A6A58' }}>Tiruchanur Road, Andhra Pradesh – 517503</p>
+
+        <a href="https://fireandfeast.com"
+          target="_blank"
+          rel="dofollow"
+          style={{ fontSize: '12px', color: '#7A6A58', textDecoration: 'none' }}
+        >
+          fireandfeast.com
+        </a>
       </div>
-    </footer>
+    </footer >
   )
 }

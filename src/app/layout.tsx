@@ -3,9 +3,10 @@ import '../styles/globals.css'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-    title: "Fire & Feast Restaurant | Tirupati",
+  metadataBase: new URL('https://fireandfeast.com'),
+  title: "Fire & Feast Restaurant | Tirupati",
   description:
-    "Experience premium dining at Fire & Feast Restaurant & Leo Café, Tirupati. Handcrafted flavors, warm hospitality, and memorable dining experiences.",
+    "Fire & Feast Restaurant & Leo Café in Tirupati offers delicious food, premium coffee, refreshing beverages, and delightful desserts. Enjoy a warm atmosphere, quality service, and a memorable dining experience with family and friends.",
   keywords: [
     "Fire and Feast",
     "Fire & Feast Tirupati",
@@ -14,7 +15,18 @@ export const metadata: Metadata = {
     "Best restaurant in Tirupati",
     "Cafe in Tirupati",
   ],
-    icons: {
+  alternates: {
+    canonical: 'https://fireandfeast.com',
+  },
+  openGraph: {
+    title: 'Fire & Feast Restaurant | Tirupati',
+    description: 'Experience premium dining at Fire & Feast Restaurant & Leo Café, Tirupati.',
+    url: 'https://fireandfeast.com',
+    siteName: 'Fire & Feast Restaurant',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  icons: {
     icon: "/favicon.ico",
   },
 }
@@ -24,31 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <Navbar />
-        {/* Ticker tape — fixed below nav */}
-        {/* <div
-          className="fixed left-0 right-0 z-40 overflow-hidden"
-          style={{ top: '64px', background: '#C8561E', padding: '7px 0' }}
-        >
-          <div className="ticker-track">
-            {[
-              'Dine In Tirupati', 'Fire & Feast Restaurant', 'Leo Café',
-              'Artisanal Brews', 'Fresh Ingredients', 'Bold Flavors',
-              'Tiruchanur Road', 'Now Open',
-              'Dine In Tirupati', 'Fire & Feast Restaurant', 'Leo Café',
-              'Artisanal Brews', 'Fresh Ingredients', 'Bold Flavors',
-              'Tiruchanur Road', 'Now Open',
-            ].map((t, i) => (
-              <span
-                key={i}
-                className="inline-block text-white font-semibold"
-                style={{ fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0 32px' }}
-              >
-                {t}
-                <span style={{ marginLeft: '32px', opacity: 0.45 }}>·</span>
-              </span>
-            ))}
-          </div>
-        </div> */}
         <main style={{ paddingTop: '94px' }}>{children}</main>
       </body>
     </html>

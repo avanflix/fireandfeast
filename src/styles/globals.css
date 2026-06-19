@@ -55,6 +55,24 @@ body {
   animation: marquee 22s linear infinite;
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 56px 60px 40px;
+  border-top: 1px solid rgba(237,232,223,0.06);
+  background: #000;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 24px;
+  }
+}
+
 /* Vertical carousel */
 .carousel-y-track {
   display: flex;
