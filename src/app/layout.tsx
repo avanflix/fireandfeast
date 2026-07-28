@@ -127,6 +127,7 @@ export default function RootLayout({
           }),
         }}
       />
+      <meta name="google-site-verification" content="CpvXSz6SSaj-_xWCBg8oWlOiF-YgWmPtUmDAjoigG9w" />
       <body>
         <Navbar />
         <main style={{ paddingTop: "94px" }}>{children}</main>
